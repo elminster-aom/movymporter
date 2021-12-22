@@ -7,23 +7,23 @@ from typing import Any, Dict, Tuple
 log = logging.getLogger(__name__)
 
 
-async def formater(csv_row: Dict[str, str]) -> Dict[str, Any]:
-    if csv_row["title"] is None:
-        log.warning(f"Required field missing; field=title csv_row={csv_row!r}")
+async def formater(movie: Dict[str, str]) -> Dict[str, Any]:
+    if movie["title"] is None:
+        log.warning(f"Required field missing; field=title movie={movie!r}")
         return None
 
     return dict(
         await asyncio.gather(
-            _year(csv_row["year"]),
-            _length(csv_row["length"]),
-            _title(csv_row["title"]),
-            _subject(csv_row["subject"]),
-            _actor(csv_row["actor"]),
-            _actress(csv_row["actress"]),
-            _director(csv_row["director"]),
-            _popularity(csv_row["popularity"]),
-            _awards(csv_row["awards"]),
-            _image(csv_row["image"]),
+            _year(movie["year"]),
+            _length(movie["length"]),
+            _title(movie["title"]),
+            _subject(movie["subject"]),
+            _actor(movie["actor"]),
+            _actress(movie["actress"]),
+            _director(movie["director"]),
+            _popularity(movie["popularity"]),
+            _awards(movie["awards"]),
+            _image(movie["image"]),
         )
     )
 
