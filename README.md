@@ -34,6 +34,19 @@ Write and submit a PR implementing this behavior; please use whatever language y
   - You should see 1 count for `sink_post_total`
   - Reset the metrics count by calling `bin/reset` (`pwsh bin\reset` for Windows) in the same window as the log
 
+1. All available settings are based on an environment variables file in the home of our application. For its creation you can use this template:
+```shell
+$ nano .env
+
+# copy-paste this content:
+LOG_LEVEL = INFO
+CSV_IN = backup.csv
+URL_OUT = http://localhost:9009/movies
+STOP_ON_ERRORS = 0
+
+$ chmod 0600 .env
+```
+
 ## Helper Commands
 
 | Command | Description |
@@ -43,3 +56,37 @@ Write and submit a PR implementing this behavior; please use whatever language y
 | `bin/log` | Display logs from server |
 | `bin/clean` | Stops and remove docker containers |
 | `bin/destroy` | Destroy all local docker artifacts. *Use with caution* |
+
+
+## How it works
+The main program `tagsdump.py` has two execution modes:
+```shell
+$ python3 movymporter
+```
+
+
+## How to install
+1. Clone or download a ZIP of this project, e.g.:
+```shell
+$ git clone git@github.com:github-interviews/elminster-aom-parse-and-post-platform-ops-eng.git
+```
+2. Ensure that you have the right version of Python (v3.9, see below)
+3. Create and activate Python Virtual Environment and install required packages, e.g.:
+```shell
+$ python3 -m venv movymporter \
+&& source movymporter/bin/activate \
+&& python3 -m pip install --requirement movymporter/requirements.txt
+```
+4. Move into the new environment:
+```shell
+$ cd movymporter
+```
+
+## Additional considerations
+1. Only Unix-like systems are supported
+2. The code has been tested with Python 3.9.4
+3. For a detailed list of Python modules check out the [requirements.txt]
+4. Concepts like tunning or replication are out of the scope of this exercise
+
+## Areas of improvement
+* In Build
