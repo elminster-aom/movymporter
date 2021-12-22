@@ -73,13 +73,13 @@ $ git clone git@github.com:github-interviews/elminster-aom-parse-and-post-platfo
 2. Ensure that you have the right version of Python (v3.9, see below)
 3. Create and activate Python Virtual Environment and install required packages, e.g.:
 ```shell
-$ python3 -m venv movymporter \
-&& source movymporter/bin/activate \
-&& python3 -m pip install --requirement movymporter/requirements.txt
+$ python3 -m venv elminster-aom-parse-and-post-platform-ops-eng \
+&& source elminster-aom-parse-and-post-platform-ops-eng/bin/activate \
+&& python3 -m pip install --requirement elminster-aom-parse-and-post-platform-ops-eng/requirements.txt
 ```
 4. Move into the new environment:
 ```shell
-$ cd movymporter
+$ cd elminster-aom-parse-and-post-platform-ops-eng
 ```
 
 ## Additional considerations
