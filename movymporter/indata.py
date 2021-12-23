@@ -1,9 +1,10 @@
 import asyncio
+import chardet
 import logging
 import re
 from typing import Any, Dict, Tuple
 
-
+# chardet.detect(data.encode())
 log = logging.getLogger(__name__)
 
 
@@ -28,6 +29,19 @@ async def formater(movie: Dict[str, str]) -> Dict[str, Any]:
     )
 
 
+def _reencode(string: str) -> str:
+    if not string:
+        return None
+    result = None
+    try:
+        binary_string = string.encode()
+        encoding = chardet.detect(binary_string)["encoding"]
+        result = binary_string.decode(encoding)
+    except UnicodeDecodeError as error:
+        log.warning(f"{error}; string={string!r} binary_string={binary_string!r}")
+    return result
+
+
 async def _year(year: str) -> Tuple[str, int]:
     result = None
     try:
@@ -49,23 +63,23 @@ async def _length(length: str) -> Tuple[str, float]:
 
 
 async def _title(title: str) -> Tuple[str, str]:
-    return "title", title
+    return "title", _reencode(title)
 
 
 async def _subject(subject: str) -> Tuple[str, str]:
-    return "subject", subject
+    return "subject", _reencode(subject)
 
 
 async def _actor(actor: str) -> Tuple[str, str]:
-    return "actor", actor
+    return "actor", _reencode(actor)
 
 
 async def _actress(actress: str) -> Tuple[str, str]:
-    return "actress", actress
+    return "actress", _reencode(actress)
 
 
 async def _director(director: str) -> Tuple[str, str]:
-    return "director", director
+    return "director", _reencode(director)
 
 
 async def _popularity(popularity: str) -> Tuple[str, float]:
