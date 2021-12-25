@@ -88,7 +88,6 @@ $ python3 movymporter
 4. Concepts like tunning or replication are out of the scope of this exercise
 
 # Areas of improvement
-* About 20% requests fail by HTTP return 503, during import
 * Additional validations controls are missing:
     - Control movie year data, between 1888 and Now()
     - Control popularity, between 0 and 100
