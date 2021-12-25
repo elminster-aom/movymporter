@@ -9,6 +9,20 @@ log = logging.getLogger(__name__)
 
 
 async def formater(movie: Dict[str, str]) -> Dict[str, Any]:
+    """Receives the original CSV row, converted to a dictionary, and do
+    necessary transformations. Looking that new output dictionary fulfills
+    requirements of storing DB
+    Missing Tranformations:
+    - Control movie year data, between 1888 and Now()
+    - Control popularity, between 0 and 100
+
+    Args:
+        movie (Dict[str, str]): CSV row converted to a dictionary, with all
+            information about a specific movie
+
+    Returns:
+        Dict[str, Any]: The input dictionary, after transformations
+    """
     if movie["title"] is None:
         log.warning(f"Required field missing; field=title movie={movie!r}")
         return None
@@ -30,6 +44,14 @@ async def formater(movie: Dict[str, str]) -> Dict[str, Any]:
 
 
 def _reencode(string: str) -> str:
+    """Look for best string decoding and convert to it, the input `string`
+
+    Args:
+        string (str): String to decode
+
+    Returns:
+        str: String decoded
+    """
     if not string:
         return None
     result = None
@@ -47,7 +69,6 @@ async def _year(year: str) -> Tuple[str, int]:
     try:
         result = int(year)
     except ValueError as error:
-
         log.warning(f"{error}; field=length value={year!r}, substitution={result!r}")
     return "year", result
 
@@ -57,7 +78,6 @@ async def _length(length: str) -> Tuple[str, float]:
     try:
         result = float(length)
     except ValueError as error:
-
         log.warning(f"{error}; field=length value={length!r}, substitution={result!r}")
     return "length", result
 
@@ -94,7 +114,7 @@ async def _popularity(popularity: str) -> Tuple[str, float]:
 
 
 async def _awards(awards: str) -> Tuple[str, str]:
-    return "awards", awards if awards in ["Yes", "No"] else "No"
+    return "awards", "Yes" if awards.lower() == "yes" else "No"
 
 
 async def _image(image: str) -> Tuple[str, str]:
