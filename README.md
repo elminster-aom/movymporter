@@ -88,9 +88,6 @@ $ python3 movymporter
 4. Concepts like tunning or replication are out of the scope of this exercise
 
 # Areas of improvement
-* Additional validations controls are missing:
-    - Control movie year data, between 1888 and Now()
-    - Control popularity, between 0 and 100
 * `aiocsv` functionality needs to be provided by this code. Some additional transformations needs to operate the full
 row as a binary string, before converting them to a dictionary
 * Take profit of _Prometheus_ availability for increase visibility of the application, e.g.:

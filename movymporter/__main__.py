@@ -42,14 +42,14 @@ async def _wrapper(
         stop (int): Do we stop after fist error (`stop!=0') or continue
             processing the full CSV file
     """
-    formated_movie = await indata.formater(movie)
     try:
+        await indata.formater(movie)
         await outdata.url_post(
             session,
             url=url,
-            data=formated_movie,
+            data=movie,
         )
-    except ValueError as error:
+    except (TypeError, ValueError) as error:
         log.error(error)
         if stop:
             raise

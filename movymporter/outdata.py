@@ -30,7 +30,7 @@ async def url_post(
     if data is not None:
         async with session.post(url, json=data) as response:
             if response.status == 201:
-                log.info(f"Register created for, title={data['title']!r}")
+                log.info(f"Register created for; title={data['title']!r}")
             else:
                 http_resp = await response.read()
                 raise ValueError(

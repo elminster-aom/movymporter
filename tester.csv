@@ -1,2 +1,10 @@
 year;length;title;subject;actor;actress;director;popularity;awards;image
-1888;109;1st film;Fantasy;Cage, Nicolas;Palmer, Teresa;Turteltaub, Jon;40;No;NicholasCage.png
+1983;104;No image;The, Horror;Walken, Christopher;Adams, Brooke;Cronenberg, David;79;No;NicholasCage.gif
+1978;94;Super popular;Horror;Gere, Richard;Adams, Brooke;Malick, Terrence;100.0;No;NicholasCage.png
+1978;94;Too popular;Horror;Gere, Richard;Adams, Brooke;Malick, Terrence;100.01;No;NicholasCage.png
+1978;94;No popular;Horror;Gere, Richard;Adams, Brooke;Malick, Terrence;1Null;No;NicholasCage.png
+
+2021;101;"Normal now";Action;Connors, Chuck;Adams, Maud;Loma, José Antonio de la;14;No;NicholasCage.png
+1888;101;"Normal old";Action;Connors, Chuck;Adams, Maud;Loma, José Antonio de la;14;No;NicholasCage.png
+2022;101;In the future;Action;Connors, Chuck;Adams, Maud;Loma, José Antonio de la;14;No;NicholasCage.png
+1887;101;too old;Action;Connors, Chuck;Adams, Maud;Loma, José Antonio de la;14;No;NicholasCage.png
