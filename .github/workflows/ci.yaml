@@ -9,7 +9,7 @@ defaults:
     working-directory: .
 
 jobs:
-  docker:
+  Movymporter:
     runs-on: ubuntu-latest
 
     # Initialization
@@ -17,13 +17,15 @@ jobs:
       - name: Set up environment, retrieving the repository
         uses: actions/checkout@main
       - name: where am I?
-        run: |
-          pwd
-          ls -la
-      - name: Initialize Docker image
-        run: bin/setup
+        run: pwd && ls -la
+      - name: Initialize Docker images
+        run: bin/initialize
       - name: Create .env file
-        run: echo -e "export LOG_LEVEL=INFO\nexport CSV_IN=starter.csv\nURL_OUT=http://localhost:9009/movies\nSTOP_ON_ERRORS=1" > .env
+        run: |
+          echo "LOG_LEVEL=INFO" > .env
+          echo "CSV_IN=tester.csv" >> .env
+          echo "URL_OUT=http://localhost:9009/movies" >> .env
+          echo "STOP_ON_ERRORS=1" >> .env
       - name: Install python modules
         run: python3 -m pip install --requirement requirements.txt
       - name: Run code
