@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"net/http"
 	"os"
 	"regexp"
@@ -106,20 +105,6 @@ func get(w http.ResponseWriter, r *http.Request) {
 }
 
 func post(w http.ResponseWriter, r *http.Request) {
-	val := rand.Intn(100)
-
-	if val < 20 {
-		log.WithFields(logrus.Fields{
-			"method": r.Method,
-			"path":   r.URL.Path,
-		}).Error("return 503")
-
-		postsProcessed.WithLabelValues(strconv.Itoa(http.StatusServiceUnavailable)).Inc()
-
-		w.WriteHeader(http.StatusServiceUnavailable)
-		return
-	}
-
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		log.WithFields(logrus.Fields{
