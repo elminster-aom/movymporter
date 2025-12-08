@@ -76,9 +76,10 @@ async def main(config: Dict[str, str]) -> None:
         await asyncio.gather(*tasks)
 
 
-return_code = 1
-env_config = dotenv.dotenv_values()
-logging.basicConfig(level=logging.getLevelName(env_config["LOG_LEVEL"]))
-asyncio.run(main(env_config))
-return_code = 0
-sys.exit(return_code)
+if __name__ == "__main__":
+    return_code = 1
+    env_config = dotenv.dotenv_values()
+    logging.basicConfig(level=logging.getLevelName(env_config["LOG_LEVEL"]))
+    asyncio.run(main(env_config))
+    return_code = 0
+    sys.exit(return_code)
