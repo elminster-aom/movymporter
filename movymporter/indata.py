@@ -9,7 +9,7 @@ from typing import Any, Dict, Tuple
 log = logging.getLogger(__name__)
 
 
-async def formater(movie: Dict[str, str]) -> None:
+async def formatter(movie: Dict[str, str]) -> None:
     """Receives the original CSV row, converted to a dictionary, and do
     necessary transformations. Looking that new output dictionary fulfills
     requirements of storing DB

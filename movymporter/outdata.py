@@ -20,7 +20,7 @@ async def url_post(
         session (aiohttp.ClientSession): HTTP Session to movies backup
             interface
         url (str): URL of our POST call to movies backup interface
-        data (Dict[str, Any]): Formated dictionary with all information about
+        data (Dict[str, Any]): Formatted dictionary with all information about
             a specific movie
 
     Raises:
