@@ -1,9 +1,10 @@
-""" From a CSV file containing movie metadata that we want to "import" into a
+"""From a CSV file containing movie metadata that we want to "import" into a
 web service using a supplied endpoint. This endpoint only accepts one object at
-a time. 
-Since data can be inacurate, this code will run the main transformations needed
+a time.
+Since data can be inaccurate, this code will run the main transformations needed
 for importing as much data (movies) as possible
 """
+
 import aiofiles
 import asyncio
 import aiocsv
@@ -26,11 +27,11 @@ async def _wrapper(
     stop: int,
 ) -> None:
     """Wrapper which defines the application main logic to parallelize
-    (`syncio.gather()`).
+    (`asyncio.gather()`).
     In our case, for every row in CSV file, the actions of reading, process and
     store it must be sequential, therefore they are carried out under this
     method.
-    On the other hand, all rows can be processed parallely, so every row is
+    On the other hand, all rows can be processed parallelly, so every row is
     assigned to a different `_wrapper()`
 
     Args:
@@ -43,7 +44,7 @@ async def _wrapper(
             processing the full CSV file
     """
     try:
-        await indata.formater(movie)
+        await indata.formatter(movie)
         await outdata.url_post(
             session,
             url=url,

@@ -15,18 +15,18 @@ increase the data accuracy (NOTE: If original data cannot be properly transforme
 # How to install
 1. Clone or download a ZIP of this project, e.g.:
 ```shell
-$ git clone git@github.com:github-interviews/elminster-aom-parse-and-post-platform-ops-eng.git
+$ git clone git@github.com:elminster-aom/movymporter.git
 ```
 1. Ensure that you have the right version of Python (v3.9+)
 1. Create and activate Python Virtual Environment and install required packages, e.g.:
 ```shell
-$ python3 -m venv elminster-aom-parse-and-post-platform-ops-eng \
-&& source elminster-aom-parse-and-post-platform-ops-eng/bin/activate \
-&& python3 -m pip install --requirement elminster-aom-parse-and-post-platform-ops-eng/requirements.txt
+$ python3 -m venv movymporter \
+&& source movymporter/bin/activate \
+&& python3 -m pip install --requirement movymporter/requirements.txt
 ```
 4. Move into the new environment:
 ```shell
-$ cd elminster-aom-parse-and-post-platform-ops-eng
+$ cd movymporter
 ```
 # How to set up and run
 1. Run `bin/setup`. This will run a web server at http://localhost:9009. Please leave this running! If you are using Windows, run all commands in the `bin` directory using PowerShell. For example, instead of `bin/setup` run `pwsh bin\setup`.
@@ -82,10 +82,13 @@ $ python3 movymporter
 
 
 # Additional considerations
-1. Only Unix-like systems are supported
+1. The code has been tested only on an Unix-like systems
 2. The code has been tested with Python 3.9.4
 3. For a detailed list of Python modules check out the [requirements.txt]
 4. Concepts like tunning or replication are out of the scope of this exercise
+5. The web server is a mock server, so data is not persisted
+6. The Docker CLI is required for setting up and running the web server
+7. The code is not optimized for large CSV files
 
 # Areas of improvement
 * `aiocsv` functionality needs to be provided by this code. Some additional transformations needs to operate the full
