@@ -33,5 +33,7 @@ jobs:
           echo "STOP_ON_ERRORS=1" >> .env
       - name: Install python modules
         run: python3 -m pip install --requirement requirements.txt
+      - name: Unit test
+        run: pytest movymporter
       - name: Run code
         run: python3 movymporter

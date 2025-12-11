@@ -4,7 +4,6 @@ aiohttp==3.8.1
 aiosignal==1.2.0
 async-timeout==4.0.2
 attrs==21.2.0
-black==21.12b0
 chardet==4.0.0
 charset-normalizer==2.0.9
 click==8.0.3
@@ -25,3 +24,4 @@ toml==0.10.2
 tomli==1.2.3
 typing_extensions==4.0.1
 yarl==1.7.2
+pytest-asyncio
