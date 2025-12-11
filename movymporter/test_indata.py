@@ -10,18 +10,16 @@ from .indata import _reencode, _year
         ("hello", "hello"), # standard characters
         ("café", "café"), # extended
         ("食べろ", "食べろ"), # more unusual encoding
-        ("Löffel".encode('ascii', errors='ignore').decode('utf8'), "Löffel"), # Wrongly encode
         ("", None), # empty string
     ]
 )
 def test_reencode(input_str, expected):
     # _reencode expects str, so skip None input manually
-    if input_str is None:
+    if expected is None:
         assert _reencode(input_str) is None
     else:
-        # Should not throw exception
         result = _reencode(input_str)
-        assert result == expected or result is not None  # chardet may guess encoding, test for None
+        assert result == expected
 
 
 @pytest.mark.asyncio
